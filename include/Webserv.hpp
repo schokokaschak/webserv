@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Webserv.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akashets <akashets@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akashets <akashets@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:20:06 by akashets          #+#    #+#             */
-/*   Updated: 2023/10/23 16:09:11 by akashets         ###   ########.fr       */
+/*   Updated: 2023/10/23 21:18:18 by akashets         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,30 @@
 # include <arpa/inet.h>
 
 # include "Logger.hpp"
+# include "ServerConfig.hpp"
+# include "ServerManager.hpp"
 
+#define CONNECTION_TIMEOUT 60 // Time in seconds before client get kicked out if no data was sent.
+#ifdef TESTER
+    #define MESSAGE_BUFFER 40000 
+#else
+    #define MESSAGE_BUFFER 40000
+#endif
+
+#define MAX_URI_LENGTH 4096
+#define MAX_CONTENT_LENGTH 30000000
+
+template <typename T>
+std::string toString(const T val)
+{
+    std::stringstream stream;
+    stream << val;
+    return stream.str();
+}
+/* Utils.c */
+std::string statusCodeString(short);
+std::string getErrorPage(short);
+int buildHtmlIndex(std::string &, std::vector<uint8_t> &, size_t &);
+int ft_stoi(std::string str);
+unsigned int fromHexToDec(const std::string& nb);
 #endif

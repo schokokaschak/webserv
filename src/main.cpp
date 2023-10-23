@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: akashets <akashets@student.42.fr>          +#+  +:+       +#+        */
+/*   By: akashets <akashets@42wolfsburg.de>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 15:22:11 by akashets          #+#    #+#             */
-/*   Updated: 2023/10/23 15:56:39 by akashets         ###   ########.fr       */
+/*   Updated: 2023/10/23 21:18:11 by akashets         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,12 @@ int main(int argc, char **argv)
 		try 
 		{
 			(void)argv;
-			// std::string		config;
 			// ConfigParser	cluster;
-        	// ServerManager 	master;
+        	ServerManager 	master;
 			// signal(SIGPIPE, sigpipeHandle);
-			/* configuration file as argument or default path */
-			// config = (argc == 1 ? "configs/default.conf" : argv[1]);
-			// cluster.createCluster(config);
+			// cluster.createCluster(argc == 1 ? "configs/default.conf" : argv[1]);
 			// cluster.print(); // for checking
-			// master.setupServers(cluster.getServers());
+			master.setupServers(cluster.getServers());
 			// master.runServers();
 		}
 		catch (std::exception &e) {
